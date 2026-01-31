@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三亚旅游攻略 | 专为俄罗斯游客打造</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 重置样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        html, body {
+            background-color: #fff;
+            color: #1d1d1f;
+            line-height: 1.5;
+        }
+        
+        /* 语言切换栏样式 */
+        .language-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 36px;
+            background-color: #f5f5f7;
+            border-bottom: 1px solid #e8e8ed;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .language-btn {
+            border: none;
+            background: transparent;
+            color: #0071e3;
+            font-size: 12px;
+            margin-left: 18px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .language-btn.active {
+            color: #1d1d1f;
+            font-weight: 500;
+            cursor: default;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            position: sticky;
+            top: 36px;
+            z-index: 999;
+            padding: 12px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1d1d1f;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            color: #0071e3;
+        }
+        
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 15px;
+            margin-left: 28px;
+            transition: color 0.2s ease;
+        }
+        
+        nav a:hover {
+            color: #0071e3;
+        }
+        
+        nav a i {
+            margin-right: 6px;
+        }
+        
+        /* 横幅区样式 */
+        .banner {
+            width: 100%;
+            height: 80vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') 
+                        no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 36px;
+        }
+        
+        .banner-text h1 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .banner-text p {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* 主要内容样式 */
+        .guide-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            color: #1d1d1f;
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .section-title i {
+            color: #0071e3;
+        }
+        
+        /* 卡片样式 */
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 24px;
+        }
+        
+        .card-content h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-content h3 i {
+            color: #0071e3;
+        }
+        
+        .card-content p {
+            font-size: 15px;
+            color: #86868b;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .card-content p b {
+            color: #1d1d1f;
+        }
+        
+        .card-content .tip {
+            background-color: #f5f5f7;
+            border-left: 3px solid #0071e3;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .card-content .tip i {
+            color: #0071e3;
+            margin-right: 8px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #f5f5f7;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .footer-content h3 i {
+            color: #0071e3;
+        }
+        
+        .footer-content p {
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 8px;
+        }
+        
+        .footer-content p.copyright {
+            margin-top: 32px;
+            font-size: 12px;
+        }
+        
+        .social {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 20px;
+        }
+        
+        .social a {
+            color: #86868b;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            nav a {
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            
+            .banner-text h1 {
+                font-size: 32px;
+            }
+            
+            .banner-text p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .card-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换栏 -->
+    <div class="language-bar">
+        <button class="language-btn active" data-lang="cn">中文</button>
+        <button class="language-btn" data-lang="en">English</button>
+        <button class="language-btn" data-lang="ru">Русский</button>
+    </div>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-palm-tree"></i>
+                <span id="nav-logo">三亚旅游攻略</span>
+            </a>
+            <nav>
+                <a href="#prepare" id="nav-prepare-link">
+                    <i class="fas fa-suitcase-rolling"></i>
+                    <span id="nav-prepare">出行准备</span>
+                </a>
+                <a href="#sights" id="nav-sights-link">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span id="nav-sights">必去景点</span>
+                </a>
+                <a href="#food" id="nav-food-link">
+                    <i class="fas fa-utensils"></i>
+                    <span id="nav-food">特色美食</span>
+                </a>
+                <a href="#hotel" id="nav-hotel-link">
+                    <i class="fas fa-hotel"></i>
+                    <span id="nav-hotel">住宿推荐</span>
+                </a>
+                <a href="#traffic" id="nav-traffic-link">
+                    <i class="fas fa-bus-alt"></i>
+                    <span id="nav-traffic">交通指南</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 横幅区 -->
+    <div class="banner">
+        <div class="banner-text">
+            <h1 id="banner-title">三亚 - 中国南部的度假天堂</h1>
+            <p id="banner-desc">俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物</p>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <main class="container">
+        <!-- 出行准备板块 -->
+        <section class="guide-section" id="prepare">
+            <h2 class="section-title">
+                <i class="fas fa-suitcase-rolling"></i>
+                <span id="title-prepare">出行准备</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1569511162775-1e0f21f9d7b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="三亚凤凰机场" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-passport"></i><span id="prepare-1-title">签证政策</span></h3>
+                        <p id="prepare-1-desc1">俄罗斯公民可免签入境三亚，停留最长<b>15天</b>！</p>
+                        <p id="prepare-1-desc2">仅需持有有效期超过6个月的护照，以及酒店预订/返程机票即可。</p>
+                        <div class="tip"><i class="fas fa-lightbulb"></i><span id="prepare-1-tip">小贴士：将护照复印件保存在手机和纸质版中。</span></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="三亚海滩" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-sun"></i><span id="prepare-2-title">天气与穿搭</span></h3>
+                        <p id="prepare-2-desc1">三亚全年温暖，气温维持在20-35℃之间。</p>
+                        <p id="prepare-2-desc2">建议携带轻便衣物、泳衣、太阳镜、50倍以上防晒霜和遮阳帽。</p>
+                        <p id="prepare-2-desc3">雨季（6-9月）建议携带雨伞或雨衣。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="支付场景" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-wallet"></i><span id="prepare-3-title">货币与支付</span></h3>
+                        <p id="prepare-3-desc1">官方货币为人民币（CNY），可在银行或酒店兑换外币。</p>
+                        <p id="prepare-3-desc2">大部分场所支持Visa/Mastercard信用卡，以及支付宝/微信移动支付。</p>
+                        <div class="tip"><i class="fas fa-lightbulb"></i><span id="prepare-3-tip">小贴士：准备少量现金，用于小摊贩等小额消费。</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 必去景点板块 -->
+        <section class="guide-section" id="sights">
+            <h2 class="section-title">
+                <i class="fas fa-map-marked-alt"></i>
+                <span id="title-sights">必去景点</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="亚龙湾" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-water"></i><span id="sights-1-title">亚龙湾</span></h3>
+                        <p id="sights-1-desc1">三亚最知名的海滩，细白沙滩搭配清澈蓝海，视觉体验极佳。</p>
+                        <p id="sights-1-desc2">可体验冲浪、浮潜、摩托艇等水上项目，配套设施完善。</p>
+                        <p id="sights-1-desc3">周边遍布高端酒店、特色餐厅和购物商场。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="蜈支洲岛" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-island-tropical"></i><span id="sights-2-title">蜈支洲岛</span></h3>
+                        <p id="sights-2-desc1">三亚最美海岛，海水能见度高，是潜水和沙滩度假的绝佳选择。</p>
+                        <p id="sights-2-desc2">岛上设有酒店、餐厅和多种休闲娱乐项目，可全天游玩。</p>
+                        <p id="sights-2-desc3">从海南本岛乘坐渡轮即可到达，船程约20分钟。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="免税购物中心" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-shopping-bag"></i><span id="sights-3-title">三亚国际免税城</span></h3>
+                        <p id="sights-3-desc1">中国最大的免税购物中心，入驻超300个国际知名品牌。</p>
+                        <p id="sights-3-desc2">美妆、腕表、服饰等品类价格低于欧洲，性价比极高。</p>
+                        <p id="sights-3-desc3">俄罗斯游客可享受离岛免税退税政策，购物更划算。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色美食板块 -->
+        <section class="guide-section" id="food">
+            <h2 class="section-title">
+                <i class="fas fa-utensils"></i>
+                <span id="title-food">特色美食</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="海鲜" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-fish-fins"></i><span id="food-1-title">新鲜海鲜</span></h3>
+                        <p id="food-1-desc1">三亚以鲜活海鲜闻名，龙虾、螃蟹、石斑鱼、贝类应有尽有。</p>
+                        <p id="food-1-desc2">推荐前往海鲜市场自行采购，再到周边餐厅加工，仅需支付加工费。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="海南菜" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-bowl-rice"></i><span id="food-2-title">传统海南菜</span></h3>
+                        <p id="food-2-desc1">必尝海南鸡饭、海鲜粉、清补凉、热带水果沙拉等特色美食。</p>
+                        <p id="food-2-desc2">大部分餐厅配有英文菜单，部分热门餐厅提供俄文菜单。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="热带水果" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-apple-alt"></i><span id="food-3-title">热带水果</span></h3>
+                        <p id="food-3-desc1">芒果、木瓜、山竹、榴莲、红毛丹等热带水果，新鲜又实惠。</p>
+                        <p id="food-3-desc2">可在当地市场或超市购买，部分水果可现切品尝。</p>
+                        <div class="tip"><i class="fas fa-lightbulb"></i><span id="food-3-tip">小贴士：榴莲热量较高，请勿过量食用，且部分场所禁止携带。</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 住宿推荐板块 -->
+        <section class="guide-section" id="hotel">
+            <h2 class="section-title">
+                <i class="fas fa-hotel"></i>
+                <span id="title-hotel">住宿推荐</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="五星级酒店" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-star"></i><span id="hotel-1-title">五星级酒店</span></h3>
+                        <p id="hotel-1-desc1">主要分布在亚龙湾、海棠湾一线海景区域，配有超大泳池、SPA、海景餐厅。</p>
+                        <p id="hotel-1-desc2">价格：1000-5000元/晚，根据淡旺季浮动。</p>
+                        <p id="hotel-1-desc3">适合情侣浪漫度假、家庭亲子出游，体验高端服务。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="公寓民宿" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-home"></i><span id="hotel-2-title">公寓民宿</span></h3>
+                        <p id="hotel-2-desc1">空间宽敞，配有独立厨房，可自行烹饪海鲜等美食。</p>
+                        <p id="hotel-2-desc2">价格：300-1000元/晚，性价比极高。</p>
+                        <p id="hotel-2-desc3">适合朋友结伴出游、家庭长住，更具生活气息。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="青年旅社" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-house-user"></i><span id="hotel-3-title">青年旅社/民宿</span></h3>
+                        <p id="hotel-3-desc1">价格低廉，老板热情好客，可认识各地游客，适合年轻人。</p>
+                        <p id="hotel-3-desc2">价格：100-300元/晚，部分为床位房，部分为单间。</p>
+                        <p id="hotel-3-desc3">主要分布在市区和大东海周边，交通便利，靠近商圈。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交通指南板块 -->
+        <section class="guide-section" id="traffic">
+            <h2 class="section-title">
+                <i class="fas fa-bus-alt"></i>
+                <span id="title-traffic">交通指南</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="三亚机场" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-plane-arrival"></i><span id="traffic-1-title">三亚凤凰机场</span></h3>
+                        <p id="traffic-1-desc1">机场距离市区约20公里，可乘坐出租车、机场大巴或酒店免费接送车。</p>
+                        <p id="traffic-1-desc2">出租车：到市区约100元，大部分高端酒店提供免费接机服务。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1564419434663-c499673c3edd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="当地交通" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-bus"></i><span id="traffic-2-title">当地交通</span></h3>
+                        <p id="traffic-2-desc1">公交车：票价1-5元，覆盖所有主要景点和商圈，性价比高。</p>
+                        <p id="traffic-2-desc2">出租车：打表计费，起步价8元，出行便捷。</p>
+                        <p id="traffic-2-desc3">共享电动车：短途出行首选，1-2元/小时，随处可借还。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="汽车租赁" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-car"></i><span id="traffic-3-title">汽车租赁</span></h3>
+                        <p id="traffic-3-desc1">可选择带司机包车或自驾（需持有国际驾驶证），环岛游玩更自由。</p>
+                        <p id="traffic-3-desc2">价格：200-500元/天，根据车型和淡旺季浮动。</p>
+                        <p id="traffic-3-desc3">适合深度游玩海南岛，打卡陵水、万宁等周边城市。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-content">
+            <h3><i class="fas fa-palm-tree"></i><span id="footer-title">三亚旅游攻略 - 专为俄罗斯游客打造</span></h3>
+            <p id="footer-desc1">免签入境 | 15天停留 | 滨海沙滩 | 新鲜海鲜 | 免税购物</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright" id="copyright">© 2025 三亚旅游局 - 保留所有权利</p>
+        </div>
+    </footer>
+
+    <script>
+        // 完整的语言数据
+        const langData = {
+            cn: {
+                // 页面标题
+                "page-title": "三亚旅游攻略 | 专为俄罗斯游客打造",
+                
+                // 导航
+                "nav-logo": "三亚旅游攻略",
+                "nav-prepare": "出行准备",
+                "nav-sights": "必去景点",
+                "nav-food": "特色美食",
+                "nav-hotel": "住宿推荐",
+                "nav-traffic": "交通指南",
+                
+                // 横幅
+                "banner-title": "三亚 - 中国南部的度假天堂",
+                "banner-desc": "俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物",
+                
+                // 出行准备
+                "title-prepare": "出行准备",
+                "prepare-1-title": "签证政策",
+                "prepare-1-desc1": "俄罗斯公民可免签入境三亚，停留最长<b>15天</b>！",
+                "prepare-1-desc2": "仅需持有有效期超过6个月的护照，以及酒店预订/返程机票即可。",
+                "prepare-1-tip": "小贴士：将护照复印件保存在手机和纸质版中。",
+                "prepare-2-title": "天气与穿搭",
+                "prepare-2-desc1": "三亚全年温暖，气温维持在20-35℃之间。",
+                "prepare-2-desc2": "建议携带轻便衣物、泳衣、太阳镜、50倍以上防晒霜和遮阳帽。",
+                "prepare-2-desc3": "雨季（6-9月）建议携带雨伞或雨衣。",
+                "prepare-3-title": "货币与支付",
+                "prepare-3-desc1": "官方货币为人民币（CNY），可在银行或酒店兑换外币。",
+                "prepare-3-desc2": "大部分场所支持Visa/Mastercard信用卡，以及支付宝/微信移动支付。",
+                "prepare-3-tip": "小贴士：准备少量现金，用于小摊贩等小额消费。",
+                
+                // 必去景点
+                "title-sights": "必去景点",
+                "sights-1-title": "亚龙湾",
+                "sights-1-desc1": "三亚最知名的海滩，细白沙滩搭配清澈蓝海，视觉体验极佳。",
+                "sights-1-desc2": "可体验冲浪、浮潜、摩托艇等水上项目，配套设施完善。",
+                "sights-1-desc3": "周边遍布高端酒店、特色餐厅和购物商场。",
+                "sights-2-title": "蜈支洲岛",
+                "sights-2-desc1": "三亚最美海岛，海水能见度高，是潜水和沙滩度假的绝佳选择。",
+                "sights-2-desc2": "岛上设有酒店、餐厅和多种休闲娱乐项目，可全天游玩。",
+                "sights-2-desc3": "从海南本岛乘坐渡轮即可到达，船程约20分钟。",
+                "sights-3-title": "三亚国际免税城",
+                "sights-3-desc1": "中国最大的免税购物中心，入驻超300个国际知名品牌。",
+                "sights-3-desc2": "美妆、腕表、服饰等品类价格低于欧洲，性价比极高。",
+                "sights-3-desc3": "俄罗斯游客可享受离岛免税退税政策，购物更划算。",
+                
+                // 特色美食
+                "title-food": "特色美食",
+                "food-1-title": "新鲜海鲜",
+                "food-1-desc1": "三亚以鲜活海鲜闻名，龙虾、螃蟹、石斑鱼、贝类应有尽有。",
+                "food-1-desc2": "推荐前往海鲜市场自行采购，再到周边餐厅加工，仅需支付加工费。",
+                "food-2-title": "传统海南菜",
+                "food-2-desc1": "必尝海南鸡饭、海鲜粉、清补凉、热带水果沙拉等特色美食。",
+                "food-2-desc2": "大部分餐厅配有英文菜单，部分热门餐厅提供俄文菜单。",
+                "food-3-title": "热带水果",
+                "food-3-desc1": "芒果、木瓜、山竹、榴莲、红毛丹等热带水果，新鲜又实惠。",
+                "food-3-desc2": "可在当地市场或超市购买，部分水果可现切品尝。",
+                "food-3-tip": "小贴士：榴莲热量较高，请勿过量食用，且部分场所禁止携带。",
+                
+                // 住宿推荐
+                "title-hotel": "住宿推荐",
+                "hotel-1-title": "五星级酒店",
+                "hotel-1-desc1": "主要分布在亚龙湾、海棠湾一线海景区域，配有超大泳池、SPA、海景餐厅。",
+                "hotel-1-desc2": "价格：1000-5000元/晚，根据淡旺季浮动。",
+                "hotel-1-desc3": "适合情侣浪漫度假、家庭亲子出游，体验高端服务。",
+                "hotel-2-title": "公寓民宿",
+                "hotel-2-desc1": "空间宽敞，配有独立厨房，可自行烹饪海鲜等美食。",
+                "hotel-2-desc2": "价格：300-1000元/晚，性价比极高。",
+                "hotel-2-desc3": "适合朋友结伴出游、家庭长住，更具生活气息。",
+                "hotel-3-title": "青年旅社/民宿",
+                "hotel-3-desc1": "价格低廉，老板热情好客，可认识各地游客，适合年轻人。",
+                "hotel-3-desc2": "价格：100-300元/晚，部分为床位房，部分为单间。",
+                "hotel-3-desc3": "主要分布在市区和大东海周边，交通便利，靠近商圈。",
+                
+                // 交通指南
+                "title-traffic": "交通指南",
+                "traffic-1-title": "三亚凤凰机场",
+                "traffic-1-desc1": "机场距离市区约20公里，可乘坐出租车、机场大巴或酒店免费接送车。",
+                "traffic-1-desc2": "出租车：到市区约100元，大部分高端酒店提供免费接机服务。",
+                "traffic-2-title": "当地交通",
+                "traffic-2-desc1": "公交车：票价1-5元，覆盖所有主要景点和商圈，性价比高。",
+                "traffic-2-desc2": "出租车：打表计费，起步价8元，出行便捷。",
+                "traffic-2-desc3": "共享电动车：短途出行首选，1-2元/小时，随处可借还。",
+                "traffic-3-title": "汽车租赁",
+                "traffic-3-desc1": "可选择带司机包车或自驾（需持有国际驾驶证），环岛游玩更自由。",
+                "traffic-3-desc2": "价格：200-500元/天，根据车型和淡旺季浮动。",
+                "traffic-3-desc3": "适合深度游玩海南岛，打卡陵水、万宁等周边城市。",
+                
+                // 页脚
+                "footer-title": "三亚旅游攻略 - 专为俄罗斯游客打造",
+                "footer-desc1": "免签入境 | 15天停留 | 滨海沙滩 | 新鲜海鲜 | 免税购物",
+                "copyright": "© 2025 三亚旅游局 - 保留所有权利"
+            },
+            en: {
+                // 页面标题
+                "page-title": "Sanya Travel Guide | For Russian Tourists",
+                
+                // 导航
+                "nav-logo": "Sanya Travel Guide",
+                "nav-prepare": "Preparation",
+                "nav-sights": "Top Sights",
+                "nav-food": "Local Food",
+                "nav-hotel": "Accommodation",
+                "nav-traffic": "Transportation",
+                
+                // 横幅
+                "banner-title": "Sanya - Paradise in Southern China",
+                "banner-desc": "Visa-Free for Russians | Sandy Beaches | Fresh Seafood | Duty-Free Shopping",
+                
+                // 出行准备
+                "title-prepare": "Travel Preparation",
+                "prepare-1-title": "Visa Policy",
+                "prepare-1-desc1": "Russian citizens can enter Sanya <b>visa-free</b> for up to 15 days!",
+                "prepare-1-desc2": "Only a valid passport (valid for more than 6 months) and hotel booking/return ticket are required.",
+                "prepare-1-tip": "Tip: Keep a copy of your passport in your phone and in paper form.",
+                "prepare-2-title": "Weather & Clothing",
+                "prepare-2-desc1": "Sanya is warm all year round, with temperatures ranging from 20-35°C.",
+                "prepare-2-desc2": "Bring light clothing, swimsuit, sunglasses, SPF50+ sunscreen and a sun hat.",
+                "prepare-2-desc3": "Bring an umbrella during the rainy season (June to September).",
+                "prepare-3-title": "Money & Payment",
+                "prepare-3-desc1": "Official currency is CNY (Yuan). You can exchange currency at banks or hotels.",
+                "prepare-3-desc2": "Visa/Mastercard, Alipay and WeChat Pay are accepted in most places.",
+                "prepare-3-tip": "Tip: Bring a small amount of cash for small purchases.",
+                
+                // 必去景点
+                "title-sights": "Top Sights to Visit",
+                "sights-1-title": "Yalong Bay",
+                "sights-1-desc1": "Sanya's most popular beach with white sand and clear blue water.",
+                "sights-1-desc2": "You can surf, dive, ride a catamaran and enjoy other water sports.",
+                "sights-1-desc3": "Many restaurants and shops are located nearby for convenience.",
+                "sights-2-title": "Wuzhizhou Island",
+                "sights-2-desc1": "The most beautiful island in Sanya, perfect for beach relaxation and diving.",
+                "sights-2-desc2": "There are hotels, restaurants and various entertainments on the island.",
+                "sights-2-desc3": "You can get there by ferry from Hainan Island with a short ride.",
+                "sights-3-title": "Duty-Free Shopping Center",
+                "sights-3-desc1": "The largest duty-free shopping center in China with over 300 brands.",
+                "sights-3-desc2": "Prices for cosmetics, watches and clothes are lower than in Europe.",
+                "sights-3-desc3": "Russian tourists can enjoy tax refund service for a better shopping experience.",
+                
+                // 特色美食
+                "title-food": "Local Cuisine",
+                "food-1-title": "Fresh Seafood",
+                "food-1-desc1": "Sanya is famous for fresh shrimp, crabs, fish and mollusks from the sea.",
+                "food-1-desc2": "Buy seafood at the local market and cook it in a nearby restaurant (only pay for cooking).",
+                "food-2-title": "Traditional Chinese Cuisine",
+                "food-2-desc1": "Try Hainanese chicken rice, seafood noodles and tropical fruit salad.",
+                "food-2-desc2": "Most restaurants have English menus, some even have Russian menus.",
+                "food-3-title": "Tropical Fruits",
+                "food-3-desc1": "Mango, papaya, longan, durian, rambutan - all fresh and cheap.",
+                "food-3-desc2": "You can buy them at local markets or supermarkets easily.",
+                "food-3-tip": "Tip: Do not eat too much durian - it is very high in calories!",
+                
+                // 住宿推荐
+                "title-hotel": "Accommodation Options",
+                "hotel-1-title": "5-Star Hotels",
+                "hotel-1-desc1": "Located in Yalong Bay and Haitang Bay with big pools, SPA and restaurants.",
+                "hotel-1-desc2": "Price: 1000-5000 CNY per night, varying by season.",
+                "hotel-1-desc3": "Suitable for romantic trips or family vacations with high-end service.",
+                "hotel-2-title": "Apartments",
+                "hotel-2-desc1": "More space with a kitchen, you can cook your own food easily.",
+                "hotel-2-desc2": "Price: 300-1000 CNY per night, high cost performance.",
+                "hotel-2-desc3": "Suitable for friends or families with children for a long stay.",
+                "hotel-3-title": "Hostels",
+                "hotel-3-desc1": "Low price with friendly staff, perfect for young travelers and backpackers.",
+                "hotel-3-desc2": "Price: 100-300 CNY per night, bed or private room available.",
+                "hotel-3-desc3": "Most are located in the city center or near the beach with convenient traffic.",
+                
+                // 交通指南
+                "title-traffic": "Transportation in Sanya",
+                "traffic-1-title": "Sanya Airport",
+                "traffic-1-desc1": "The airport is 20km from the city center - take a taxi, bus or hotel transfer.",
+                "traffic-1-desc2": "Taxi: about 100 CNY to the city center, hotel transfer is often free.",
+                "traffic-2-title": "Local Transport",
+                "traffic-2-desc1": "Buses: cheap (1-5 CNY), covering all major sights and areas.",
+                "traffic-2-desc2": "Taxis: convenient with metered fare for all trips.",
+                "traffic-2-desc3": "Electric scooters: popular for short trips (1-2 CNY per hour).",
+                "traffic-3-title": "Car Rental",
+                "traffic-3-desc1": "Rent a car with a driver or drive yourself (international driving license required).",
+                "traffic-3-desc2": "Price: 200-500 CNY per day, varying by car type and season.",
+                "traffic-3-desc3": "Perfect for traveling around Hainan Island to visit nearby cities.",
+                
+                // 页脚
+                "footer-title": "Sanya Travel Guide for Russian Tourists",
+                "footer-desc1": "Visa-Free | 15 Days Stay | Beaches | Fresh Seafood | Duty-Free Shopping",
+                "copyright": "© 2025 Sanya Tourism - All Rights Reserved"
+            },
+            ru: {
+                // 页面标题
+                "page-title": "Гайд по Санье | Для русских туристов",
+                
+                // 导航
+                "nav-logo": "Гайд по Санье",
+                "nav-prepare": "Подготовка",
+                "nav-sights": "Места",
+                "nav-food": "Еда",
+                "nav-hotel": "Жилье",
+                "nav-traffic": "Транспорт",
+                
+                // 横幅
+                "banner-title": "Санья - Рай на Юге Китая",
+                "banner-desc": "Бесплатная виза для русских | Песчаные пляжи | Морская еда | Шопинг без налогов",
+                
+                // 出行准备
+                "title-prepare": "Подготовка к поездке",
+                "prepare-1-title": "Визовая политика",
+                "prepare-1-desc1": "Русские граждане могут въехать в Санью без визы на срок до <b>15 дней</b>!",
+                "prepare-1-desc2": "Достаточно иметь действительный паспорт (срок действия более 6 месяцев) и бронь отеля/билет обратно.",
+                "prepare-1-tip": "Совет: Сохраните копию паспорта в телефоне и на бумаге.",
+                "prepare-2-title": "Погода и одежда",
+                "prepare-2-desc1": "Санья теплый круглый год: температура 20-35°C.",
+                "prepare-2-desc2": "Берите легкую одежду, купальник, солнцезащитные очки, крем с SPF50+ и шляпу.",
+                "prepare-2-desc3": "В дождливый сезон (с июня по сентябрь) возьмите зонток.",
+                "prepare-3-title": "Деньги и платежы",
+                "prepare-3-desc1": "Официальная валюта - юань (CNY). Обменять валюту можно в банках или отелях.",
+                "prepare-3-desc2": "В большинстве мест принимают карты Visa/Mastercard, мобильный платеж Alipay/WeChat Pay.",
+                "prepare-3-tip": "Совет: Возьмите небольшую сумму наличных для мелких покупок.",
+                
+                // 必去景点
+                "title-sights": "Лучшие места для посещения",
+                "sights-1-title": "Пляж Ялуван (亚龙湾)",
+                "sights-1-desc1": "Самый популярный пляж Саньи - белый песок, чистая голубая вода.",
+                "sights-1-desc2": "Можно заниматься серфингом, подводным плаванием, кататься на катамаране.",
+                "sights-1-desc3": "Рядом много ресторанов и магазинов.",
+                "sights-2-title": "Остров Восточной Халиды (蜈支洲岛)",
+                "sights-2-desc1": "Красивейший остров Саньи - идеально для отдыха на пляже и подводного плавания.",
+                "sights-2-desc2": "На острове есть отели, рестораны и много развлечений.",
+                "sights-2-desc3": "Добраться можно на пароме из г. Хайнань.",
+                "sights-3-title": "Центр налогового шопинга",
+                "sights-3-desc1": "Самый большой центр налогового шопинга в Китае - более 300 брендов.",
+                "sights-3-desc2": "Цены на косметику, часы, одежду ниже, чем в Европе.",
+                "sights-3-desc3": "Русские туристы могут получить возврат налогов.",
+                
+                // 特色美食
+                "title-food": "Национальная еда Саньи",
+                "food-1-title": "Свежая морская еда",
+                "food-1-desc1": "Санья известна за свежий креветки, крабы, рыбу и моллюски.",
+                "food-1-desc2": "Лучше всего ехать на рыбный рынок, купить продукты и приготовить в соседнем ресторане (платите только за приготовление).",
+                "food-2-title": "Традиционная китайская кухня",
+                "food-2-desc1": "Попробуйте хаинаньский рис с курицей, лапшу с морепродуктами, фруктовый салат.",
+                "food-2-desc2": "Большинство ресторанов имеют меню на английском, некоторые на русском.",
+                "food-3-title": "Тропические фрукты",
+                "food-3-desc1": "Манго, папайя, лансан, дуриан, рамбутан - все фрукты свежие и дешевые.",
+                "food-3-desc2": "Можно купить на рынке или в супермаркете.",
+                "food-3-tip": "Совет: Не ешьте слишком много дуриана - он очень калорийный!",
+                
+                // 住宿推荐
+                "title-hotel": "Выбор жилья",
+                "hotel-1-title": "5-звездочные отели",
+                "hotel-1-desc1": "Расположены на пляже Ялуван и Хайтань - большой бассейн, спа, рестораны.",
+                "hotel-1-desc2": "Цена: 1000-5000 юаней за ночь.",
+                "hotel-1-desc3": "Подходит для романтического отдыха или семьи.",
+                "hotel-2-title": "Апартаменты",
+                "hotel-2-desc1": "Больше пространства, есть кухня - можно готовить самому.",
+                "hotel-2-desc2": "Цена: 300-1000 юаней за ночь.",
+                "hotel-2-desc3": "Подходит для группы друзей или семьи с детьми.",
+                "hotel-3-title": "Гостевые дома",
+                "hotel-3-desc1": "Низкая цена, дружелюбный персонал - подходит для молодых людей.",
+                "hotel-3-desc2": "Цена: 100-300 юаней за ночь.",
+                "hotel-3-desc3": "Большинство расположены в центре города или рядом с пляжем.",
+                
+                // 交通指南
+                "title-traffic": "Транспорт в Санье",
+                "traffic-1-title": "Аэропорт Саньи",
+                "traffic-1-desc1": "Аэропорт находится в 20 км от центра города - добраться можно на такси, автобусе или трансфере от отеля.",
+                "traffic-1-desc2": "Такси: около 100 юаней до центра, трансфер от отеля часто бесплатный.",
+                "traffic-2-title": "Местный транспорт",
+                "traffic-2-desc1": "Автобусы: дешевые (1-5 юаней), покрывают все основные места.",
+                "traffic-2-desc2": "Такси: удобно, цена рассчитывается по счетчику.",
+                "traffic-2-desc3": "Электросамокаты: популярный вариант для коротких поездок (1-2 юаней за час).",
+                "traffic-3-title": "Аренда автомобиля",
+                "traffic-3-desc1": "Можно арендовать автомобиль с водителем или самому (нужен международный водительский лицензия).",
+                "traffic-3-desc2": "Цена: 200-500 юаней за день.",
+                "traffic-3-desc3": "Идеально для путешествий по острову Хайнань.",
+                
+                // 页脚
+                "footer-title": "Гайд по Санье для русских туристов",
+                "footer-desc1": "Бесплатная виза | 15 дней отдыха | Пляжи | Морская еда | Шопинг",
+                "copyright": "© 2025 Санья Туризм - Все права защищены"
+            }
+        };
+
+        // 语言切换功能
+        function switchLanguage(lang) {
+            // 更新html的lang属性
+            document.documentElement.lang = lang;
+            
+            // 更新页面标题
+            document.title = langData[lang]["page-title"];
+            
+            // 更新所有文本元素
+            for (const id in langData[lang]) {
+                if (id === "page-title") continue; // 跳过页面标题，因为已经在上面更新了
+                
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = langData[lang][id];
+                }
+            }
+            
+            // 更新语言按钮状态
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // 保存语言偏好
+            localStorage.setItem('sanyaLang', lang);
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取保存的语言偏好，如果没有则默认中文
+            const savedLang = localStorage.getItem('sanyaLang') || 'cn';
+            
+            // 初始化语言
+            switchLanguage(savedLang);
+            
+            // 绑定语言按钮事件
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.dataset.lang;
+                    switchLanguage(lang);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
