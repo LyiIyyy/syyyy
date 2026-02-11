@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三亚对俄罗斯免签政策</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') 
+                        no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* 添加背景遮罩增强文字可读性 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg, 
+                rgba(13, 71, 161, 0.2) 0%, 
+                rgba(13, 71, 161, 0.1) 100%
+            );
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 页眉样式 */
+        .page-header {
+            text-align: center;
+            padding: 50px 0 40px;
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #4dabf7, transparent);
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            background: linear-gradient(120deg, #ffffff, #bbdefb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            color: #e3f2fd;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .policy-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(77, 171, 247, 0.9), rgba(13, 71, 161, 0.9));
+            padding: 12px 30px;
+            border-radius: 30px;
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* 主要内容区域样式 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .policy-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .policy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            font-size: 2.1rem;
+            margin-bottom: 25px;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #4dabf7, transparent);
+            border-radius: 2px;
+        }
+        
+        /* 表格样式 */
+        .policy-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .policy-table thead {
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.8), rgba(25, 118, 210, 0.8));
+        }
+        
+        .policy-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .policy-table tbody tr {
+            transition: background-color 0.3s;
+        }
+        
+        .policy-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .policy-table tbody tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .policy-table tbody tr:hover {
+            background: rgba(77, 171, 247, 0.15);
+        }
+        
+        .policy-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .policy-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 提示卡片样式 */
+        .tips-section {
+            margin-top: 40px;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #4dabf7;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .tip-card h3 {
+            color: #bbdefb;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(77, 171, 247, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* 统计数据样式 */
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.2), rgba(25, 118, 210, 0.2));
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #4dabf7, #bbdefb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #bbdefb;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 1rem;
+            color: #e3f2fd;
+        }
+        
+        .footer-content {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .footer-link {
+            color: #4dabf7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #bbdefb;
+            text-decoration: underline;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .policy-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .policy-table th,
+            .policy-table td {
+                padding: 15px;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(77, 171, 247, 0.5);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(77, 171, 247, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>三亚对俄罗斯免签政策</h1>
+            <p class="subtitle">为促进中俄旅游交流与合作，海南省对俄罗斯公民实施便利的免签入境政策，为俄罗斯游客提供更便捷的旅游体验</p>
+            <div class="policy-badge">政策有效期：2025年9月15日 - 2026年9月14日</div>
+        </header>
+        
+        <div class="main-content">
+            <section class="policy-section">
+                <h2>政策核心信息</h2>
+                <table class="policy-table">
+                    <thead>
+                        <tr>
+                            <th>政策要点</th>
+                            <th>具体内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>适用对象</strong></td>
+                            <td>俄罗斯持普通护照的公民</td>
+                        </tr>
+                        <tr>
+                            <td><strong>政策有效期</strong></td>
+                            <td>2025年9月15日至2026年9月14日（试行阶段）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>可免签事由</strong></td>
+                            <td>旅游、商务、探亲、访问、医疗、会展、体育竞技、过境等（不包括工作、学习）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>最长停留时间</strong></td>
+                            <td>不超过30天</td>
+                        </tr>
+                        <tr>
+                            <td><strong>入境口岸</strong></td>
+                            <td>海南省所有对外开放的口岸（如三亚凤凰国际机场）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>活动范围</strong></td>
+                            <td>仅限于海南省行政区域内</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="policy-section">
+                <h2>政策优势</h2>
+                <div style="margin-top: 20px;">
+                    <p style="margin-bottom: 20px; line-height: 1.8;">此项免签政策为俄罗斯游客带来以下便利：</p>
+                    
+                    <div style="margin-top: 25px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 12px; height: 12px; background: #4dabf7; border-radius: 50%; margin-right: 15px;"></div>
+                            <p><strong>手续简化：</strong>无需提前申请签证，持有效护照即可入境</p>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 12px; height: 12px; background: #4dabf7; border-radius: 50%; margin-right: 15px;"></div>
+                            <p><strong>时间灵活：</strong>最长30天停留时间，满足多种旅游需求</p>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <div style="width: 12px; height: 12px; background: #4dabf7; border-radius: 50%; margin-right: 15px;"></div>
+                            <p><strong>适用范围广：</strong>旅游、商务、探亲、医疗等多种目的均可适用</p>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 12px; height: 12px; background: #4dabf7; border-radius: 50%; margin-right: 15px;"></div>
+                            <p><strong>服务完善：</strong>三亚已建立完善的俄语服务和旅游接待体系</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <section class="tips-section policy-section">
+            <h2>出行实用指南</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🛂</span>入境流程</h3>
+                    <p>俄罗斯公民持有效普通护照，经边检机关查验准许后即可免签入境，无需提前申请签证或预申报。建议提前准备好返程机票和酒店预订信息。</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🗣️</span>语言服务</h3>
+                    <p>三亚在机场、主要景区、商圈增设俄语标识，许多酒店、餐厅和购物中心配备俄语服务人员，有效解决语言沟通障碍。</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">💳</span>支付便利</h3>
+                    <p>三亚积极推进支付便利化改革，拓展外卡受理、移动支付和现金兑换服务，多数商户支持Visa、MasterCard等国际信用卡。</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">✈️</span>交通信息</h3>
+                    <p>三亚已开通至俄罗斯莫斯科、圣彼得堡、克拉斯诺亚尔斯克等航线，每月执飞往返航班64架次，为游客提供便利的空中交通。</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🏖️</span>旅游推荐</h3>
+                    <p>俄罗斯游客青睐大东海、亚龙湾、鹿回头风景区、天涯海角等景点。可体验热带雨林探险、滨海度假、康养理疗等多样化旅游产品。</p>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="tip-icon">🌡️</span>气候建议</h3>
+                    <p>三亚属热带海洋性气候，年平均气温25-28°C，建议携带防晒用品、轻便夏装、泳衣和雨具。11月至次年4月为最佳旅游季节。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="policy-section">
+            <h2>政策成效与数据</h2>
+            <p style="margin-bottom: 30px;">自免签政策实施以来，极大简化了俄罗斯游客入境程序，降低了时间和费用成本，进一步释放了俄罗斯游客的来琼意愿。三亚已形成完善的俄语旅游接待体系，为俄罗斯游客提供全方位的服务保障。</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">51%</div>
+                    <div class="stat-label">俄罗斯游客占三亚入境游客比例</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">64</div>
+                    <div class="stat-label">每月往返航班架次</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3.5万+</div>
+                    <div class="stat-label">2024年俄罗斯旅客入境人次</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">30天</div>
+                    <div class="stat-label">免签最长停留时间</div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-content">
+                <p>三亚市人民政府 • 三亚市旅游和文化广电体育局</p>
+                <p>政策咨询电话：+86-898-12345 • 官方网站：www.sanya.gov.cn</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">免签政策详情</a>
+                    <a href="#" class="footer-link">入境指南</a>
+                    <a href="#" class="footer-link">旅游推荐</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">本信息仅供参考，具体政策以官方最新发布为准 | 更新日期：2025年9月</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有内容区域添加动画
+            const contentSections = document.querySelectorAll('.policy-section, .page-header');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            contentSections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+            
+            // 为卡片添加悬停效果
+            const cards = document.querySelectorAll('.tip-card, .stat-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = 10;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = 1;
+                });
+            });
+            
+        const statValues = document.querySelectorAll('.stat-value');
+            statValues.forEach(stat => {
+                const originalText = stat.textContent;
+                
+                // 判断是否为百分数
+                if (originalText.includes('%')) {
+                    const numValue = parseFloat(originalText);
+                    if (!isNaN(numValue)) {
+                        let start = 0;
+                        const end = numValue;
+                        const duration = 2000;
+                        const increment = end / (duration / 16);
+                        
+                        const timer = setInterval(() => {
+                            start += increment;
+                            if (start >= end) {
+                                start = end;
+                                clearInterval(timer);
+                            }
+                            stat.textContent = Math.floor(start) + '%';
+                        }, 16);
+                    }
+                } 
+                // 判断是否为纯数字（包括小数）
+                else if (/^\d+(\.\d+)?$/.test(originalText)) {
+                    const numValue = parseFloat(originalText);
+                    if (!isNaN(numValue)) {
+                        let start = 0;
+                        const end = numValue;
+                        const duration = 2000;
+                        const increment = end / (duration / 16);
+                        
+                        const timer = setInterval(() => {
+                            start += increment;
+                            if (start >= end) {
+                                start = end;
+                                clearInterval(timer);
+                            }
+                            stat.textContent = Math.floor(start);
+                        }, 16);
+                    }
+                }
+                // 其他情况（如“3.5万+”、“30天”）不做动画，保持原样
+            });
+        });
+    </script>
+</body>
+</html>
