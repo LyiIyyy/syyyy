@@ -195,6 +195,18 @@
             color: #0071e3;
         }
         
+        /* 为签证政策链接添加样式 */
+        .card-content h3 a {
+            color: #1d1d1f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .card-content h3 a:hover {
+            color: #0071e3;
+            text-decoration: underline;
+        }
+        
         .card-content p {
             font-size: 15px;
             color: #86868b;
@@ -331,6 +343,10 @@
                     <i class="fas fa-bus-alt"></i>
                     <span id="nav-traffic">交通指南</span>
                 </a>
+                <a href="#tcm" id="nav-tcm-link">
+                    <i class="fas fa-spa"></i>
+                    <span id="nav-tcm">中医体验</span>
+                </a>
             </nav>
         </div>
     </header>
@@ -339,7 +355,7 @@
     <div class="banner">
         <div class="banner-text">
             <h1 id="banner-title">三亚 - 中国南部的度假天堂</h1>
-            <p id="banner-desc">俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物</p>
+            <p id="banner-desc">俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物 | 中医养生</p>
         </div>
     </div>
 
@@ -358,7 +374,7 @@
                          class="card-img" 
                          loading="lazy">
                     <div class="card-content">
-                        <h3><i class="fas fa-passport"></i><a href="https://lyiiyyy.github.io/-/" id="prepare-1-title">签证政策</a></h3>
+                        <h3><i class="fas fa-passport"></i><a href="https://lyiiyyy.github.io/-/#" target="_blank" id="prepare-1-title">签证政策</a></h3>
                         <p id="prepare-1-desc1">俄罗斯公民可免签入境三亚，停留最长<b>30天</b>！</p>
                         <p id="prepare-1-desc2">仅需持有有效期超过6个月的护照，以及酒店预订/返程机票即可。</p>
                         <div class="tip"><i class="fas fa-lightbulb"></i><span id="prepare-1-tip">小贴士：将护照复印件保存在手机和纸质版中。</span></div>
@@ -555,7 +571,7 @@
                 </div>
                 
                 <div class="card">
-                    <img src="https://raw.githubusercontent.com/LyiIyyy/syyyy/ac8e4bb585c5f1e1c21c580e6163c3fbb23bd932/DSCF2405.JPG" 
+                    <img src="https://th.bing.com/th/id/R.aa85d81f5670fe0f45248f54b89d57fe?rik=euWfvyt%2bNGXslA&riu=http%3a%2f%2fwww.keanda.com.cn%2fuploadfiles%2fimage%2f202010%2f144.png&ehk=TRUjst8Ufh6EIkNyXHYkg4N4UTFx%2b0fJqbCkvL5VOHw%3d&risl=&pid=ImgRaw&r=0" 
                          alt="当地交通" 
                          class="card-img" 
                          loading="lazy">
@@ -581,13 +597,61 @@
                 </div>
             </div>
         </section>
+
+        <!-- 特色中医体验板块 -->
+        <section class="guide-section" id="tcm">
+            <h2 class="section-title">
+                <i class="fas fa-spa"></i>
+                <span id="title-tcm">特色中医体验</span>
+            </h2>
+            <div class="card-list">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="中式推拿" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-hands"></i><span id="tcm-1-title">中式推拿按摩</span></h3>
+                        <p id="tcm-1-desc1">传统中医推拿手法，通过按压、揉捏、拍打等手法疏通经络，缓解肌肉疲劳。</p>
+                        <p id="tcm-1-desc2">特别适合旅行后的身体放松，缓解长途飞行的疲惫和腰背酸痛。</p>
+                        <p id="tcm-1-desc3">价格：100-300元/小时，根据按摩师等级和时长浮动。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://tse1.explicit.bing.net/th/id/OIP.6ldbyNWKa60fnyHkz4YPFAHaEP?rs=1&pid=ImgDetMain&o=7&rm=3" 
+                         alt="针灸疗法" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-stethoscope"></i><span id="tcm-2-title">中医针灸疗法</span></h3>
+                        <p id="tcm-2-desc1">传统针灸治疗，通过刺激穴位调节气血，治疗疼痛、失眠、消化不良等问题。</p>
+                        <p id="tcm-2-desc2">三亚的温泉酒店常设有中医针灸服务，结合温泉疗效更佳。</p>
+                        <p id="tcm-2-desc3">价格：200-500元/次，需由持证中医师操作。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://th.bing.com/th/id/R.663e7d01056f4db39c56048341697bea?rik=9PD0DVh1waoWQg&riu=http%3a%2f%2fwww.yufuguoyi.com%2fUpload%2fTemplate%2fyufu%2fattached%2fimage%2f20230103%2f20230103092442_7683.png&ehk=tT6%2fxB4DWgC90DgjMXgCtKAxwQwRZkJ0nySGbuLYQ9A%3d&risl=&pid=ImgRaw&r=0" 
+                         alt="艾灸养生" 
+                         class="card-img" 
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3><i class="fas fa-fire"></i><span id="tcm-3-title">中医艾灸养生</span></h3>
+                        <p id="tcm-3-desc1">通过燃烧艾草温热刺激穴位，驱寒除湿，增强免疫力，特别适合体质虚寒者。</p>
+                        <p id="tcm-3-desc2">三亚气候湿润，艾灸可以帮助排除体内湿气，让人神清气爽。</p>
+                        <div class="tip"><i class="fas fa-lightbulb"></i><span id="tcm-3-tip">小贴士：中医体验前请告知身体状况，孕妇、高血压等特殊人群需谨慎选择。</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- 页脚 -->
     <footer>
         <div class="container footer-content">
             <h3><i class="fas fa-palm-tree"></i><span id="footer-title">三亚旅游攻略 - 专为俄罗斯游客打造</span></h3>
-            <p id="footer-desc1">免签入境 | 30天停留 | 滨海沙滩 | 新鲜海鲜 | 免税购物</p>
+            <p id="footer-desc1">免签入境 | 30天停留 | 滨海沙滩 | 新鲜海鲜 | 中医养生 | 免税购物</p>
             <div class="social">
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fab fa-vk"></i></a>
@@ -611,15 +675,16 @@
                 "nav-food": "特色美食",
                 "nav-hotel": "住宿推荐",
                 "nav-traffic": "交通指南",
+                "nav-tcm": "中医体验",
                 
                 // 横幅
                 "banner-title": "三亚 - 中国南部的度假天堂",
-                "banner-desc": "俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物",
+                "banner-desc": "俄罗斯游客免签入境 | 细软沙滩 | 新鲜海鲜 | 免税购物 | 中医养生",
                 
                 // 出行准备
                 "title-prepare": "出行准备",
                 "prepare-1-title": "签证政策",
-                "prepare-1-desc1": "俄罗斯公民可免签入境三亚，停留最长<b>30天</b>！",  // 已修改：15天改为30天
+                "prepare-1-desc1": "俄罗斯公民可免签入境三亚，停留最长<b>30天</b>！",
                 "prepare-1-desc2": "仅需持有有效期超过6个月的护照，以及酒店预订/返程机票即可。",
                 "prepare-1-tip": "小贴士：将护照复印件保存在手机和纸质版中。",
                 "prepare-2-title": "天气与穿搭",
@@ -688,9 +753,24 @@
                 "traffic-3-desc2": "价格：200-500元/天，根据车型和淡旺季浮动。",
                 "traffic-3-desc3": "适合深度游玩海南岛，打卡陵水、万宁等周边城市。",
                 
+                // 特色中医体验
+                "title-tcm": "特色中医体验",
+                "tcm-1-title": "中式推拿按摩",
+                "tcm-1-desc1": "传统中医推拿手法，通过按压、揉捏、拍打等手法疏通经络，缓解肌肉疲劳。",
+                "tcm-1-desc2": "特别适合旅行后的身体放松，缓解长途飞行的疲惫和腰背酸痛。",
+                "tcm-1-desc3": "价格：100-300元/小时，根据按摩师等级和时长浮动。",
+                "tcm-2-title": "中医针灸疗法",
+                "tcm-2-desc1": "传统针灸治疗，通过刺激穴位调节气血，治疗疼痛、失眠、消化不良等问题。",
+                "tcm-2-desc2": "三亚的温泉酒店常设有中医针灸服务，结合温泉疗效更佳。",
+                "tcm-2-desc3": "价格：200-500元/次，需由持证中医师操作。",
+                "tcm-3-title": "中医艾灸养生",
+                "tcm-3-desc1": "通过燃烧艾草温热刺激穴位，驱寒除湿，增强免疫力，特别适合体质虚寒者。",
+                "tcm-3-desc2": "三亚气候湿润，艾灸可以帮助排除体内湿气，让人神清气爽。",
+                "tcm-3-tip": "小贴士：中医体验前请告知身体状况，孕妇、高血压等特殊人群需谨慎选择。",
+                
                 // 页脚
                 "footer-title": "三亚旅游攻略 - 专为俄罗斯游客打造",
-                "footer-desc1": "免签入境 | 30天停留 | 滨海沙滩 | 新鲜海鲜 | 免税购物",  // 已修改：15天改为30天
+                "footer-desc1": "免签入境 | 30天停留 | 滨海沙滩 | 新鲜海鲜 | 中医养生 | 免税购物",
                 "copyright": "© 2025 三亚旅游局 - 保留所有权利"
             },
             en: {
@@ -704,15 +784,16 @@
                 "nav-food": "Local Food",
                 "nav-hotel": "Accommodation",
                 "nav-traffic": "Transportation",
+                "nav-tcm": "TCM Experience",
                 
                 // 横幅
                 "banner-title": "Sanya - Paradise in Southern China",
-                "banner-desc": "Visa-Free for Russians | Sandy Beaches | Fresh Seafood | Duty-Free Shopping",
+                "banner-desc": "Visa-Free for Russians | Sandy Beaches | Fresh Seafood | Duty-Free Shopping | TCM Wellness",
                 
                 // 出行准备
                 "title-prepare": "Travel Preparation",
                 "prepare-1-title": "Visa Policy",
-                "prepare-1-desc1": "Russian citizens can enter Sanya <b>visa-free</b> for up to 30 days!",  // 已修改：15 days改为30 days
+                "prepare-1-desc1": "Russian citizens can enter Sanya <b>visa-free</b> for up to 30 days!",
                 "prepare-1-desc2": "Only a valid passport (valid for more than 6 months) and hotel booking/return ticket are required.",
                 "prepare-1-tip": "Tip: Keep a copy of your passport in your phone and in paper form.",
                 "prepare-2-title": "Weather & Clothing",
@@ -781,9 +862,24 @@
                 "traffic-3-desc2": "Price: 200-500 CNY per day, varying by car type and season.",
                 "traffic-3-desc3": "Perfect for traveling around Hainan Island to visit nearby cities.",
                 
+                // 特色中医体验
+                "title-tcm": "Traditional Chinese Medicine Experience",
+                "tcm-1-title": "Chinese Tui Na Massage",
+                "tcm-1-desc1": "Traditional Chinese massage techniques that relieve muscle fatigue by pressing, kneading, and tapping to疏通经络.",
+                "tcm-1-desc2": "Especially suitable for post-travel relaxation, relieving fatigue from long flights and back pain.",
+                "tcm-1-desc3": "Price: 100-300 CNY/hour, varying by therapist level and duration.",
+                "tcm-2-title": "Acupuncture Therapy",
+                "tcm-2-desc1": "Traditional acupuncture treatment that regulates qi and blood by stimulating acupoints to treat pain, insomnia, and indigestion.",
+                "tcm-2-desc2": "Hot spring hotels in Sanya often offer acupuncture services, with enhanced effects when combined with hot springs.",
+                "tcm-2-desc3": "Price: 200-500 CNY/session, must be performed by a licensed TCM practitioner.",
+                "tcm-3-title": "Moxibustion Wellness",
+                "tcm-3-desc1": "Warm stimulation of acupoints by burning mugwort to驱寒除湿, enhance immunity, especially suitable for those with cold constitution.",
+                "tcm-3-desc2": "Sanya's humid climate makes moxibustion particularly effective for removing dampness from the body, leaving you refreshed.",
+                "tcm-3-tip": "Tip: Inform about your health condition before TCM experience; pregnant women,高血压 patients, etc. should choose carefully.",
+                
                 // 页脚
                 "footer-title": "Sanya Travel Guide for Russian Tourists",
-                "footer-desc1": "Visa-Free | 30 Days Stay | Beaches | Fresh Seafood | Duty-Free Shopping",  // 已修改：15 Days改为30 Days
+                "footer-desc1": "Visa-Free | 30 Days Stay | Beaches | Fresh Seafood | TCM Wellness | Duty-Free Shopping",
                 "copyright": "© 2025 Sanya Tourism - All Rights Reserved"
             },
             ru: {
@@ -797,15 +893,16 @@
                 "nav-food": "Еда",
                 "nav-hotel": "Жилье",
                 "nav-traffic": "Транспорт",
+                "nav-tcm": "ТКМ Опыт",
                 
                 // 横幅
                 "banner-title": "Санья - Рай на Юге Китая",
-                "banner-desc": "Бесплатная виза для русских | Песчаные пляжи | Морская еда | Шопинг без налогов",
+                "banner-desc": "Бесплатная виза для русских | Песчаные пляжи | Морская еда | Шопинг без налогов | ТКМ Здоровье",
                 
                 // 出行准备
                 "title-prepare": "Подготовка к поездке",
                 "prepare-1-title": "Визовая политика",
-                "prepare-1-desc1": "Русские граждане могут въехать в Санью без визы на срок до <b>30 дней</b>!",  // 已修改：15 дней改为30 дней
+                "prepare-1-desc1": "Русские граждане могут въехать в Санью без визы на срок до <b>30 дней</b>!",
                 "prepare-1-desc2": "Достаточно иметь действительный паспорт (срок действия более 6 месяцев) и бронь отеля/билет обратно.",
                 "prepare-1-tip": "Совет: Сохраните копию паспорта в телефоне и на бумаге.",
                 "prepare-2-title": "Погода и одежда",
@@ -874,9 +971,24 @@
                 "traffic-3-desc2": "Цена: 200-500 юаней за день.",
                 "traffic-3-desc3": "Идеально для путешествий по острову Хайнань.",
                 
+                // 特色中医体验
+                "title-tcm": "Традиционная Китайская Медицина Опыт",
+                "tcm-1-title": "Китайский массаж Туй На",
+                "tcm-1-desc1": "Традиционные китайские массажные техники, снимающие мышечную усталость с помощью надавливания, разминания и постукивания для疏通经络.",
+                "tcm-1-desc2": "Особенно подходит для расслабления после путешествий, снятия усталости от длительных перелетов и болей в спине.",
+                "tcm-1-desc3": "Цена: 100-300 юаней/час, зависит от уровня массажиста и продолжительности.",
+                "tcm-2-title": "Иглоукалывание",
+                "tcm-2-desc1": "Традиционное лечение иглоукалыванием, регулирующее ци и кровь путем стимуляции акупунктурных точек для лечения боли, бессонницы и несварения желудка.",
+                "tcm-2-desc2": "Гостиницы с горячими источниками в Санье часто предлагают услуги иглоукалывания, с усиленным эффектом в сочетании с горячими источниками.",
+                "tcm-2-desc3": "Цена: 200-500 юаней/сеанс, должно выполняться лицензированным практикующим врачом ТКМ.",
+                "tcm-3-title": "Моксибустная терапия",
+                "tcm-3-desc1": "Тепловая стимуляция акупунктурных точек путем сжигания полыни для驱寒除湿, усиления иммунитета, особенно подходит для людей с холодной конституцией.",
+                "tcm-3-desc2": "Влажный климат Саньи делает моксибустию особенно эффективной для удаления влаги из организма, оставляя вас освеженным.",
+                "tcm-3-tip": "Совет: Сообщите о состоянии вашего здоровья перед опытом ТКМ; беременные женщины, пациенты с гипертонией и т.д. должны выбирать осторожно.",
+                
                 // 页脚
                 "footer-title": "Гайд по Санье для русских туристов",
-                "footer-desc1": "Бесплатная виза | 30 дней отдыха | Пляжи | Морская еда | Шопинг",  // 已修改：15 дней改为30 дней
+                "footer-desc1": "Бесплатная виза | 30 дней отдыха | Пляжи | Морская еда | ТКМ Здоровье | Шопинг",
                 "copyright": "© 2025 Санья Туризм - Все права защищены"
             }
         };
